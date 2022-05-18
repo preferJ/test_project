@@ -6,6 +6,8 @@ import com.its.dbex.repository.PeopleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service    // < @Service 어노테이션을 달아주면 싱글톤패턴 개~꿀~ 쓸려면 쓸려는 클래스에 가서 @Autowired 를 사용 이 설명은 홈컨에 가서 보세요~
 public class PeopleService {
     @Autowired
@@ -24,5 +26,10 @@ public class PeopleService {
             return false;
         }
 
+    }
+
+    public List<PeopleDTO> findAll() {
+        List<PeopleDTO> peopleDTOList = peopleRepository.findAll();
+        return peopleDTOList;
     }
 }

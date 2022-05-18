@@ -3,14 +3,16 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-
-
-
-
 <mapper namespace="people">
-<insert id="save" parameterType="people">
-    insert into people_table(name,age) values (#{name},#{age})
-</insert>
+    <insert id="save" parameterType="people">
+        insert into people_table(name, age)
+        values (#{name}, #{age})
+    </insert>
+
+    <select id="findAll" resultType="people">
+        select *
+        from people_table
+    </select>
 </mapper>
 
 

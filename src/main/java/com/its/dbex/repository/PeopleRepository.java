@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class PeopleRepository {
 
@@ -26,5 +28,9 @@ public class PeopleRepository {
 
        return sql.insert("people.save", newPeopleDTO);
 
+    }
+
+    public List<PeopleDTO> findAll() {
+        return sql.selectList("people.findAll");
     }
 }

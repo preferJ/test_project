@@ -23,6 +23,7 @@
 
 <h2>people 실습</h2>
 <a href="people-save-form">Data</a>
+<a href="people-list">people list 보기</a>
 
 
 </body>

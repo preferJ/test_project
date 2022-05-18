@@ -3,6 +3,6 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-<!--        <typeAlias type="com.icia.ex.dto.PostDTO" alias="post" />-->
+        <typeAlias type="com.its.dbex.dto.PeopleDTO" alias="people" />
     </typeAliases>
 </configuration>

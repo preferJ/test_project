@@ -2,7 +2,6 @@ package com.its.dbex.Controller;
 
 
 import com.its.dbex.dto.PeopleDTO;
-import com.its.dbex.service.DataService;
 import com.its.dbex.service.PeopleService;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class PeopleController {
@@ -57,6 +57,13 @@ public class PeopleController {
     public String peopleSavePrint() {
 
         return null;
+    }
+
+    @GetMapping("/people-list")
+    public String findAll(Model model){
+        List<PeopleDTO> peopleDTOList = peopleService.findAll();
+        model.addAttribute("peopleList",peopleDTOList);
+        return "people-list";
     }
 
 }
