@@ -1,6 +1,7 @@
 package com.its.dbex.repository;
 
 
+import com.its.dbex.dto.MemberDTO;
 import com.its.dbex.dto.PeopleDTO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;

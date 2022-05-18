@@ -38,7 +38,6 @@ public class PeopleController {
 
     @PostMapping("/people-save")
     public String peopleSaveReq(@ModelAttribute PeopleDTO peopleDTO) {
-        peopleService.peopleSave(peopleDTO);
         boolean saveResult = peopleService.peopleSave(peopleDTO);
         if(saveResult){
             //저장 성공

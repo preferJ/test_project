@@ -4,5 +4,6 @@
 <configuration>
     <typeAliases>
         <typeAlias type="com.its.dbex.dto.PeopleDTO" alias="people" />
+        <typeAlias type="com.its.dbex.dto.MemberDTO" alias="member" />
     </typeAliases>
 </configuration>

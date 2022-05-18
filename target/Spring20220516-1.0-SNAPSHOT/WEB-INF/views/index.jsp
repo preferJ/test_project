@@ -25,6 +25,12 @@
 <a href="people-save-form">Data</a>
 <a href="people-list">people list 보기</a>
 
+<br><br><br>
+
+<h2>Member 실습</h2>
+<a href="member-index">멤버 인덱스로 이동</a>
+
+
 
 </body>
 </html>
