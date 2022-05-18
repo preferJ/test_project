@@ -21,7 +21,7 @@ public class DataController {
 
     @GetMapping("data-save-form")
     public String saveForm() {
-        return "data-save-form";
+        return "data/data-save-form";
     }
 
 
@@ -30,7 +30,7 @@ public class DataController {
 
         dataService.dataSave(val1, val2);
 
-        return "data-save";
+        return "data/data-save";
     }
 
     @GetMapping("/data-save-print")

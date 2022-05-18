@@ -24,7 +24,7 @@ public class PeopleController {
 
     @GetMapping("/people-save-form")
     public String peopleSaveForm() {
-        return "people-save-form";
+        return "people/people-save-form";
     }
 
 //    @PostMapping("/people-save")
@@ -62,7 +62,7 @@ public class PeopleController {
     public String findAll(Model model){
         List<PeopleDTO> peopleDTOList = peopleService.findAll();
         model.addAttribute("peopleList",peopleDTOList);
-        return "people-list";
+        return "people/people-list";
     }
 
 }
