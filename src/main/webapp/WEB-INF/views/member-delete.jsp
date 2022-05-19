@@ -16,9 +16,14 @@
           integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
-<h2>member List 를 봅시다~</h2>
+<h2>Member-Delete 을 봅시다~</h2>
 
-<h2>member 를 표에 넣어서 보여주기</h2>
+
+<h3>삭제 회원 상세 정보</h3>
+
+
+
+
 <div class="container">
     <table class="table">
         <tr>
@@ -28,24 +33,21 @@
             <th>memberName</th>
             <th>memberAge</th>
             <th>memberPhone</th>
-            <th>조회</th>
-            <th>삭제</th>
         </tr>
-        <c:forEach var="member" items="${memberList}">
-            <tr>
-                <td>${member.id}</td>
-                <td>${member.memberId}</td>
-                <td>${member.memberPassword}</td>
-                <td>${member.memberName}</td>
-                <td>${member.memberAge}</td>
-                <td>${member.memberPhone}</td>
-                <td><a href="/member-detail?id=${member.id}">조회</a></td>
-                <td><a href="/member-delete?id=${member.id}">삭제</a></td>
-                    <%--                클릭한 회원의 정보를 DB에서 가져와서 detail.jsp 에 출력--%>
-            </tr>
-        </c:forEach>
+        <tr>
+            <td> ${detailMember.id}</td>
+            <td> ${detailMember.memberId}</td>
+            <td> ${detailMember.memberPassword}</td>
+            <td> ${detailMember.memberName}</td>
+            <td> ${detailMember.memberAge}</td>
+            <td> ${detailMember.memberPhone}</td>
+        </tr>
     </table>
 </div>
+
+<br><br><br>
+
+<a href="member-index">멤버 인덱스로 이동</a>
 
 
 </body>

@@ -2,7 +2,6 @@ package com.its.dbex.Controller;
 
 import com.its.dbex.dto.MemberDTO;
 
-import com.its.dbex.dto.PeopleDTO;
 import com.its.dbex.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -49,8 +50,6 @@ public class MemberController {
     }
 
 
-
-
     @GetMapping("/member-list")
     public String findAll(Model model) {
         List<MemberDTO> memberDTOList = memberService.findAll();
@@ -60,13 +59,35 @@ public class MemberController {
 
 
     @PostMapping("/member-login-req")
-    public String memberLoginReq(@ModelAttribute MemberDTO memberDTO) {
+    public String memberLoginReq(@ModelAttribute MemberDTO memberDTO, Model model, HttpSession session) {
         MemberDTO loginMember = memberService.memberLogin(memberDTO);
         if (loginMember.getMemberId() != null) {
             //로그인 성공
+            model.addAttribute("memberList", loginMember);
+
+            // 세션(session)
+            session.setAttribute("LoginMemberId", loginMember.getMemberId());
+            session.setAttribute("LoginId", loginMember.getId());
             return "member-main";
         } else {
             return "member-index";
         }
     }
+
+    @GetMapping("/member-detail")
+    public String memberDetailToid(@RequestParam int id, Model model) {
+        MemberDTO detailMember = memberService.memberDetailToid(id);
+        model.addAttribute("detailMember", detailMember);
+        return "member-detail";
+    }
+
+    @GetMapping("/member-delete")
+    public String memberDeleteToid(@RequestParam int id, Model model) {
+        MemberDTO detailMember = memberService.memberDetailToid(id);
+        model.addAttribute("detailMember", detailMember);
+        memberService.memberDeleteToid(id);
+        return "member-delete";
+    }
+
+
 }

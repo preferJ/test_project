@@ -35,4 +35,14 @@ public class MemberService {
        MemberDTO memberLogin = memberRepository.memberLogin(memberDTO);
         return memberLogin;
     }
+
+    public MemberDTO memberDetailToid(int id) {
+        MemberDTO memberDetail = memberRepository.memberDetailToid(id);
+        return memberDetail;
+    }
+
+    public MemberDTO memberDeleteToid(int id) {
+        MemberDTO memberDelete = memberRepository.memberDeleteToid(id);
+        return memberDelete;
+    }
 }

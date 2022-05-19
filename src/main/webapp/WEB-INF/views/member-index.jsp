@@ -19,7 +19,5 @@
 <a href="/member-main">회원 전용 페이지</a> <br>
 
 
-
-
 </body>
 </html>

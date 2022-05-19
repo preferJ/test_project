@@ -3,8 +3,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-
-
 <mapper namespace="member">
     <insert id="save" parameterType="member">
         insert into member_table(memberId, memberPassword, memberName, memberAge, memberPhone)
@@ -22,6 +20,22 @@
         where memberId = #{memberId}
           and memberPassword = #{memberPassword};
     </select>
+
+    <select id="detail" resultType="member">
+        select *
+        from member_table
+        where id = #{id}
+
+    </select>
+
+    <select id="delete" resultType="member">
+        delete
+        from member_table
+        where id = #{id}
+
+    </select>
+
+
 </mapper>
 
 

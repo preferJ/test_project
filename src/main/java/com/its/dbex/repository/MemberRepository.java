@@ -29,4 +29,11 @@ public class MemberRepository {
     public MemberDTO memberLogin(MemberDTO memberDTO) {
         return sql.selectOne("member.login",memberDTO);
     }
+
+    public MemberDTO memberDetailToid(int id) {
+        return sql.selectOne("member.detail",id);
+    }
+
+    public MemberDTO memberDeleteToid(int id) {return sql.selectOne("member.delete",id);
+    }
 }
