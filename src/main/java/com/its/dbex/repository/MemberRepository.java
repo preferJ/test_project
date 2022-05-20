@@ -39,4 +39,8 @@ public class MemberRepository {
     public int memberUpdate(MemberDTO memberDTO) {
         return sql.update("member.update",memberDTO);
     }
+
+    public MemberDTO memberIdDuplicateCheck(String memberId) {
+        return sql.selectOne("member.dupCheck",memberId);
+    }
 }

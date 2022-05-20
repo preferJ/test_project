@@ -17,10 +17,10 @@ public class MemberService {
     private MemberRepository memberRepository;
 
     public boolean memberSave(MemberDTO memberDTO) {
-        int saveResult =  memberRepository.memberSave(memberDTO);
-        if (saveResult > 0){
+        int saveResult = memberRepository.memberSave(memberDTO);
+        if (saveResult > 0) {
             return true;
-        }else {
+        } else {
             return false;
         }
 
@@ -32,7 +32,7 @@ public class MemberService {
     }
 
     public MemberDTO memberLogin(MemberDTO memberDTO) {
-       MemberDTO memberLogin = memberRepository.memberLogin(memberDTO);
+        MemberDTO memberLogin = memberRepository.memberLogin(memberDTO);
         return memberLogin;
     }
 
@@ -48,10 +48,21 @@ public class MemberService {
 
     public boolean memberUpdate(MemberDTO memberDTO) {
         int memberUpdatgResult = memberRepository.memberUpdate(memberDTO);
-        if(memberUpdatgResult > 0 ){
+        if (memberUpdatgResult > 0) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
+
+    public boolean memberIdDuplicateCheck(String memberId) {
+        MemberDTO dupCheckResult = memberRepository.memberIdDuplicateCheck(memberId);
+        if (dupCheckResult != null) {
+            return true; // 존재한다.
+        } else {
+            return false; //존재하지 않는다.
+        }
+    }
+
+
 }

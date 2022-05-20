@@ -41,6 +41,14 @@
     </insert>
 
 
+    <select id="dupCheck" resultType="member">
+        select *
+        from member_table
+        where memberId = #{memberId}
+
+    </select>
+
+
 </mapper>
 
 

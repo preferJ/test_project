@@ -6,10 +6,7 @@ import com.its.dbex.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -29,6 +26,17 @@ public class MemberController {
     @GetMapping("/member-index")
     public String memberIndex() {
         return "member-index";
+    }
+
+    @GetMapping("/member-response-test1")
+    public @ResponseBody String memberResponseTest1() {
+        return "member-main";
+    }
+
+    @GetMapping("/member-response-test2")
+    public @ResponseBody List<MemberDTO> memberResponseTest2() {
+        return memberService.findAll();
+
     }
 
     @PostMapping("/member-save")
@@ -96,7 +104,7 @@ public class MemberController {
 
 
     @GetMapping("/member-update-form")
-    public String memberUpdateForm(HttpSession session, Model model){
+    public String memberUpdateForm(HttpSession session, Model model) {
         Long updateId = (Long) session.getAttribute("LoginId");
         MemberDTO updateMember = memberService.memberDetailToid(updateId);
         model.addAttribute("updateMember", updateMember);
@@ -105,14 +113,54 @@ public class MemberController {
     }
 
     @PostMapping("/member-update")
-    public String memberUpdate(@ModelAttribute MemberDTO memberDTO){
+    public String memberUpdate(@ModelAttribute MemberDTO memberDTO) {
         boolean memberUpdateResult = memberService.memberUpdate(memberDTO);
-        if (memberUpdateResult){
-            return "redirect:/member-detail?id="+memberDTO.getId();
-        }else {
+        if (memberUpdateResult) {
+            return "redirect:/member-detail?id=" + memberDTO.getId();
+        } else {
             return "fail";
         }
     }
+    // ajax() : 비동기
+    // full name : Asynchronous Javascript And XML
+    // Jquery활용
+    // @ResponseBody :
 
+
+    @PostMapping("/member-duplicate-check")
+    public @ResponseBody String memberIdDuplicateCheck(@RequestParam String memberId) {
+        System.out.println("memberId = " + memberId);
+        // memberId를 DB에서 중복값이 있는지 없는지 체크하고
+        // 없으면 ok 있으면 no 라는 String 값을 리턴받으세요
+
+        boolean dupCheckResult = memberService.memberIdDuplicateCheck(memberId);
+        if (dupCheckResult) {
+            System.out.println("사용불가 ");
+            return "NO";
+        } else {
+            System.out.println("사용가능 ");
+            return "OK";
+        }
+
+    }
+
+    @GetMapping("/detail-ajax")
+    public @ResponseBody MemberDTO findByIdAjax(@RequestParam("id") Long id) {
+        System.out.println("id = " + id);
+        MemberDTO memberDTO = memberService.memberDetailToid(id);
+        return memberDTO;
+    }
+
+
+    @GetMapping("/member-logout")
+    public String memberLogout(HttpSession session){
+        session.invalidate(); //세션 무효화 = 로그아웃
+        return "index";
+        
+    }
 
 }
+
+
+
+
