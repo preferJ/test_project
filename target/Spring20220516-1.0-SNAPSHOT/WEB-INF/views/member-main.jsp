@@ -10,6 +10,7 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
 </head>
 <body>
 <h2>This is Member-Main (로그인 성공)</h2>
@@ -17,10 +18,22 @@
 로그인 회원 정보 : ${memberList}
 세션에 담은 memberId : ${sessionScope.LoginMemberId}
 세션에 담은 Id : ${sessionScope.LoginId}
+<a href="member-index">멤버 인덱스로 이동</a>
+<br><br><br>
+<button class="btn btn-primary" onclick="location.href='/member-update-form'">주소 호출 방식 수정</button>
+<br><br><br>
+<button class="btn btn-danger" onclick="memberUpdateForm()">함수 호출 방식 수정</button>
 
+<script>
+    // function memberUpdateForm(){
+    //
+    // }
 
+    const memberUpdateForm = () =>{
+        location.href="/member-update-form"
+    }
 
-
+</script>
 
 
 </body>

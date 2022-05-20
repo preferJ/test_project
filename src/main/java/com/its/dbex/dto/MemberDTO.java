@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor //기본 생성자
 @AllArgsConstructor //모든 필드 매개변수 생성자
 public class MemberDTO {
-    private int id;
+    private Long id;
     private String memberId;
     private String memberPassword;
     private String memberName;

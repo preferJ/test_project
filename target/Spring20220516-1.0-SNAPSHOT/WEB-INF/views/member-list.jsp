@@ -18,17 +18,6 @@
 <body>
 <h2>member List 를 봅시다~</h2>
 
-
-<c:forEach var="member" items="${memberList}">
-    ${member.memberId}
-    ${member.memberPassword}
-    ${member.memberName}
-    ${member.memberAge}
-    ${member.memberPhone}<br>
-
-</c:forEach>
-
-
 <h2>member 를 표에 넣어서 보여주기</h2>
 <div class="container">
     <table class="table">
@@ -52,7 +41,7 @@
                 <td>${member.memberPhone}</td>
                 <td><a href="/member-detail?id=${member.id}">조회</a></td>
                 <td><a href="/member-delete?id=${member.id}">삭제</a></td>
-<%--                클릭한 회원의 정보를 DB에서 가져와서 detail.jsp 에 출력--%>
+                    <%--                클릭한 회원의 정보를 DB에서 가져와서 detail.jsp 에 출력--%>
             </tr>
         </c:forEach>
     </table>

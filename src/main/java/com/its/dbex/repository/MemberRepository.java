@@ -2,7 +2,6 @@ package com.its.dbex.repository;
 
 import com.its.dbex.dto.MemberDTO;
 
-import com.its.dbex.dto.PeopleDTO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -30,10 +29,14 @@ public class MemberRepository {
         return sql.selectOne("member.login",memberDTO);
     }
 
-    public MemberDTO memberDetailToid(int id) {
+    public MemberDTO memberDetailToid(Long id) {
         return sql.selectOne("member.detail",id);
     }
 
-    public MemberDTO memberDeleteToid(int id) {return sql.selectOne("member.delete",id);
+    public MemberDTO memberDeleteToid(Long id) {return sql.selectOne("member.delete",id);
+    }
+
+    public int memberUpdate(MemberDTO memberDTO) {
+        return sql.update("member.update",memberDTO);
     }
 }

@@ -75,18 +75,43 @@ public class MemberController {
     }
 
     @GetMapping("/member-detail")
-    public String memberDetailToid(@RequestParam int id, Model model) {
+    public String memberDetailToid(@RequestParam Long id, Model model) {
         MemberDTO detailMember = memberService.memberDetailToid(id);
         model.addAttribute("detailMember", detailMember);
         return "member-detail";
     }
 
     @GetMapping("/member-delete")
-    public String memberDeleteToid(@RequestParam int id, Model model) {
+    public String memberDeleteToid(@RequestParam Long id, Model model) {
         MemberDTO detailMember = memberService.memberDetailToid(id);
         model.addAttribute("detailMember", detailMember);
         memberService.memberDeleteToid(id);
+        List<MemberDTO> memberDTOList = memberService.findAll();
+        model.addAttribute("memberList", memberDTOList);
         return "member-delete";
+        // ※ redirect : 컨트롤러의 메서드에서 다른 메서드의 주소를 호출
+        // ※ 문법: redirect:findAll
+
+    }
+
+
+    @GetMapping("/member-update-form")
+    public String memberUpdateForm(HttpSession session, Model model){
+        Long updateId = (Long) session.getAttribute("LoginId");
+        MemberDTO updateMember = memberService.memberDetailToid(updateId);
+        model.addAttribute("updateMember", updateMember);
+
+        return "member-update-form";
+    }
+
+    @PostMapping("/member-update")
+    public String memberUpdate(@ModelAttribute MemberDTO memberDTO){
+        boolean memberUpdateResult = memberService.memberUpdate(memberDTO);
+        if (memberUpdateResult){
+            return "redirect:/member-detail?id="+memberDTO.getId();
+        }else {
+            return "fail";
+        }
     }
 
 

@@ -36,13 +36,22 @@ public class MemberService {
         return memberLogin;
     }
 
-    public MemberDTO memberDetailToid(int id) {
+    public MemberDTO memberDetailToid(Long id) {
         MemberDTO memberDetail = memberRepository.memberDetailToid(id);
         return memberDetail;
     }
 
-    public MemberDTO memberDeleteToid(int id) {
+    public MemberDTO memberDeleteToid(Long id) {
         MemberDTO memberDelete = memberRepository.memberDeleteToid(id);
         return memberDelete;
+    }
+
+    public boolean memberUpdate(MemberDTO memberDTO) {
+        int memberUpdatgResult = memberRepository.memberUpdate(memberDTO);
+        if(memberUpdatgResult > 0 ){
+            return true;
+        }else {
+            return false;
+        }
     }
 }
