@@ -3,7 +3,8 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="com.its.dbex.dto.PeopleDTO" alias="people" />
-        <typeAlias type="com.its.dbex.dto.MemberDTO" alias="member" />
+        <typeAlias type="com.its.A00ex.dto.PeopleDTO" alias="people" />
+        <typeAlias type="com.its.member.DTO.MemberDTO" alias="member" />
+        <typeAlias type="com.its.board.DTO.BoardDTO" alias="board" />
     </typeAliases>
 </configuration>
